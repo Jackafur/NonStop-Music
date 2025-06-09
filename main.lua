@@ -10,10 +10,10 @@ smlua_audio_utils_replace_sequence(SEQ_LEVEL_SLIDE, 0, 0.00000001, "_silent")
 local song_names = {
     ["BOB1.ogg"] = "Delta Rune - Field of Hopes and Dreams ",
     ["BOB2.ogg"] = "Paper Mario: Sticker Star - Warm Fuzzy Plains",
-    ["WF1.ogg"] = "Unknown",
+    ["WF1.ogg"] = "Touhou Mountain of Faith - Romantic Fall",
     ["WF2.ogg"] = "Super Mario 3D Land - Overworld Theme",
     ["SSL1.ogg"] = "Mega Man 6 - Tomahawk Man",
-    ["SSL2.ogg"] = "Super Paper Mario - Sammer’s Kingdom",
+    ["SSL2.ogg"] = "Super Paper Mario - Sammers Kingdom",
     ["SL.ogg"] = "Castlevania 64 - Renon's Theme",
     ["CCM1.ogg"] = "Mario Kart Wii - DK's Snowboard Cross",
     ["BBH1.ogg"] = "Touhou: EoSD - Patchouli Knowledge",
