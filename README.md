@@ -14,6 +14,9 @@ host's mod list (or `--enable-mod NonStop-Music` on a headless server).
 
 ## Tracks
 
+These are the names the HUD shows. Full sources (original game, composer, remix artist and
+arrangement for every track) are in [SOURCES.md](SOURCES.md).
+
 | File | Song |
 | --- | --- |
 | BOB1 | Deltarune - Field of Hopes and Dreams |
@@ -58,6 +61,8 @@ top of it:
 - new tracks: SL (Renon's Theme), COTMC1 (FF4 Battle remix), CastleWalls (Peach's Castle)
 - a different B5 track (Lower Norfair)
 - general cleanup, renamed to NonStop Music for the NonStop servers
+
+Big thanks to KettleClog for being fine with this and for helping identify the remixes.
 
 ## History
 
