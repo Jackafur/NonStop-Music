@@ -33,4 +33,11 @@ linked to, on 2026-09-26. The raw export is [`sources.csv`](sources.csv); the li
 | COTMC | COTMC1.ogg | Final Fantasy IV (remixed for Final Fantasy XIV) | Battle Theme (Troia Boss) | Nobuo Uematsu (remixed by Masayoshi Soken) | Remixed for FF14 | FF4 battle theme remixed for FF14’s Endwalker expansion. Replaced Kettle’s original (unknown) choice. Added to mod by Jack | Confirmed |
 | Castle | CastleWalls.mp3 | Mario & Luigi: Superstar Saga | Peach’s Castle | Yoko Shimomura | Original | Added by Jack, possibly replacing Kettle’s missing or absent track. | Confirmed |
 
+## Notes added later
+
+- **B2 (Bowser 2):** "Tomboyish Girl in Love" is Cirno's theme from Embodiment of Scarlet Devil,
+  not Sakuya's (hers is "Lunar Clock ~ Luna Dial"), per the
+  [Touhou Wiki song list](https://en.touhouwiki.net/wiki/List_by_Song/Embodiment_of_Scarlet_Devil).
+  The table above is left exactly as the sheet has it.
+
 > Big shout outs to KettleClog for not minding that I stole their mod and for clarifying the remixes
