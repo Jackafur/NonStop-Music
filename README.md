@@ -1,7 +1,7 @@
 # NonStop Music
 
-A custom soundtrack mod for [SM64CoopDX](https://github.com/coop-deluxe/sm64coopdx) by Jackafur.
-It replaces the level music with songs from other games. Many levels randomly pick one of two
+A custom soundtrack mod for [SM64CoopDX](https://github.com/coop-deluxe/sm64coopdx) by Jackafur,
+based on **Kettle's Sound by KettleClog**. It replaces the level music with songs from other games. Many levels randomly pick one of two
 tracks each time you enter, and a "Now Playing" box fades in at the top of the screen with the
 song name.
 
@@ -47,6 +47,17 @@ music so they do not cut over the custom track.
 
 All songs belong to their original composers and publishers. This repo only arranges them into
 a mod.
+
+## Credits
+
+The original mod is **Kettle's Sound by KettleClog**: the per-level track swapping, the
+two-song random pick, the `_silent` jingle muting and most of the tracks. Jackafur's changes on
+top of it:
+
+- the "Now Playing" HUD popup (`hud.lua`) and the song name list
+- new tracks: SL (Renon's Theme), COTMC1 (FF4 Battle remix), CastleWalls (Peach's Castle)
+- a different B5 track (Lower Norfair)
+- general cleanup, renamed to NonStop Music for the NonStop servers
 
 ## History
 

@@ -1,5 +1,5 @@
 -- name: NonStop Music
--- description: Custom soundtrack by Jackafur\n\nReplaces the soundtrack with new, original songs for a fresh experience, inspired by classic sound mods.
+-- description: Custom soundtrack by Jackafur\nBased on Kettle's Sound by KettleClog\n\nReplaces the soundtrack with new, original songs for a fresh experience, inspired by classic sound mods.
 
 -- Silence default tracks
 smlua_audio_utils_replace_sequence(SEQ_EVENT_METAL_CAP, 0, 0.00000001, "_silent")
