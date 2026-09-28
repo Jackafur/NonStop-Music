@@ -263,8 +263,8 @@ local function on_hud_render()
     local text = "Now Playing: " .. songName
     local w = djui_hud_measure_text(text)
     local x = (djui_hud_get_screen_width() - w) / 2
-    -- 112: leaves a gap under Hide and Seek's top boxes (its "Releasing Seekers" box ends at 94)
-    local y, pad = 112, 8
+    -- box 114-160: 10 under Hide and Seek's top boxes (its "Releasing Seekers" box is 40-104)
+    local y, pad = 122, 8
 
     djui_hud_set_color(0, 0, 0, 192 * alpha)
     djui_hud_render_rect(x - pad, y - pad, w + pad * 2, 30 + pad * 2)
