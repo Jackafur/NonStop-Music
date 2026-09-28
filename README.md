@@ -44,8 +44,10 @@ arrangement for every track) are in [SOURCES.md](SOURCES.md).
 | COTMC1 | FF4 Battle remixed for FF14 |
 | CastleWalls | Mario & Luigi: Superstar Saga - Peach's Castle |
 
-`CCM2.ogg` and the `Castle Walls.mp3` / `CastleWalls.ogg` duplicates ship in `sound/` but are
-not referenced by the code. `_silent.m64` mutes the metal cap and power-up jingles and the slide
+This copy is the 2026 rewrite for the RTD HnS server (see the top of `main.lua`): the unused
+`CCM2.ogg` and the `Castle Walls.mp3` / `CastleWalls.ogg` duplicates are left out, the castle
+song is an Ogg now, and B5, COTMC1, SL and WF2 are re-encoded to match the other songs (about
+60 kbps), so the download is 17 MB instead of 25. `_silent.m64` mutes the metal cap and power-up jingles and the slide
 music so they do not cut over the custom track.
 
 All songs belong to their original composers and publishers. This repo only arranges them into
@@ -57,7 +59,7 @@ The original mod is **Kettle's Sound by KettleClog**: the per-level track swappi
 two-song random pick, the `_silent` jingle muting and most of the tracks. Jackafur's changes on
 top of it:
 
-- the "Now Playing" HUD popup (`hud.lua`) and the song name list
+- the "Now Playing" HUD popup (was `hud.lua`, now in `main.lua`) and the song name list
 - new tracks: SL (Renon's Theme), COTMC1 (FF4 Battle remix), CastleWalls (Peach's Castle)
 - a different B5 track (Lower Norfair)
 - general cleanup, renamed to NonStop Music for the NonStop servers
@@ -75,3 +77,7 @@ file dates:
 3. **Jun 5 2025**, the main drench server's copy: the same fixes plus the Cyberdeous credit and
    a warp hook that re-picks the song on every warp. The most complete version, so it is the
    latest commit even though its file date is earlier.
+4. **Sep 2026**, the rewrite for the RTD HnS server on SM64CoopDX v1.5.1: the song is picked
+   once per level instead of on every warp, each song is loaded once and kept, it pauses while
+   a Roll The Dice event song plays, the level's own theme can't come back on top, and the
+   download is 17 MB.
