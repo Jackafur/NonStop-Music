@@ -1,9 +1,9 @@
 # NonStop Music
 
 A custom soundtrack mod for [SM64CoopDX](https://github.com/coop-deluxe/sm64coopdx) by Jackafur,
-based on **Kettle's Sound by KettleClog**. It replaces the level music with songs from other games. Many levels randomly pick one of two
-tracks each time you enter, and a "Now Playing" box fades in at the top of the screen with the
-song name.
+based on **Kettle's Sound by KettleClog**. It replaces the level music with songs from other
+games, and a "Now Playing" box fades in at the top of the screen with the song name. Which song
+plays where, and when it changes, is up to each player (see Options).
 
 Built for the NonStop servers in 2025 and run on all of them.
 
@@ -84,8 +84,29 @@ file dates:
 
 ## Options
 
-**Keep Song on Level Exit** (pause menu, Mod Menu, NonStop Music; saved per player, on by
-default): leaving a course through the castle (Exit Course, or Hide and Seek pulling you
-back into the round's level) keeps the song playing, and coming back doesn't restart it.
-A new level or a new Hide and Seek round still picks a new song. Turn it off to get a new
-pick on every level change.
+Pause menu, Mod Menu, NonStop Music. Each player sets their own, and they're saved.
+
+| Option | Default | What it does |
+| --- | --- | --- |
+| Change Song on Level Exit | off | Off: leaving a course through the castle (Exit Course, or Hide and Seek pulling you back into the round's level) keeps the song playing, and coming back doesn't restart it. A new level or a new Hide and Seek round still picks. On: every level change picks again |
+| Random Pick (2-Song Levels) | on | A level with two songs picks one at random each time. Off: always the first one |
+| 2025 Song Layout | off | Off: the NonStopHnS Playlist sheet's layout, every level its own song (BBH and SSL have two). On: the 2025 layout, where sister levels share a pair (BOB and THI both pick from BOB1/BOB2, WF and TTM from WF1/WF2, VCUTM and TTC from VCUTM1/VCUTM2, BITFS from BITDW1/BITFS1) |
+
+All three on is how the 2025 mod behaved. Changing the layout or the random pick switches
+the song right away.
+
+| Level | Sheet layout (default) | 2025 layout |
+| --- | --- | --- |
+| BOB | BOB1 | BOB1 or BOB2 |
+| THI | BOB2 | BOB1 or BOB2 |
+| WF | WF2 | WF1 or WF2 |
+| TTM | WF1 | WF1 or WF2 |
+| SSL | SSL1 or SSL2 | SSL1 or SSL2 |
+| BBH | BBH1 or BBH2 | BBH1 or BBH2 |
+| BITDW | BITDW2 | BITDW1 or BITDW2 |
+| BITFS | BITDW1 | BITDW1 or BITFS1 |
+| BITS | BITFS1 | BITFS1 |
+| VCUTM | VCUTM1 | VCUTM1 or VCUTM2 |
+| TTC | VCUTM2 | VCUTM1 or VCUTM2 |
+| Castle, castle grounds | CastleWalls | CastleWalls |
+| CCM, SL, HMC, LLL, RR, PSS, COTMC, Bowser 1/2/3 | one song each, the same in both | |
