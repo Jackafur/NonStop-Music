@@ -79,5 +79,13 @@ file dates:
    latest commit even though its file date is earlier.
 4. **Sep 2026**, the rewrite for the RTD HnS server on SM64CoopDX v1.5.1: the song is picked
    once per level instead of on every warp, each song is loaded once and kept, it pauses while
-   a Roll The Dice event song plays, the level's own theme can't come back on top, and the
-   download is 17 MB.
+   a Roll The Dice event song plays, the level's own theme can't come back on top, Peach's
+   Castle also plays on the castle grounds, and the download is 17 MB.
+
+## Options
+
+**Keep Song on Level Exit** (pause menu, Mod Menu, NonStop Music; saved per player, on by
+default): leaving a course through the castle (Exit Course, or Hide and Seek pulling you
+back into the round's level) keeps the song playing, and coming back doesn't restart it.
+A new level or a new Hide and Seek round still picks a new song. Turn it off to get a new
+pick on every level change.

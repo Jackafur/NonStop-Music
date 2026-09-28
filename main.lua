@@ -6,7 +6,11 @@
 -- and SOURCES.md.
 --
 -- Rewritten for the NonStop RTD HnS server. Same songs, levels, names and "Now Playing"
--- banner as the NonStop-Music repo version (kept in originals/NonStop-Music). What changed:
+-- banner as the 2025 versions (kept in originals/NonStop-Music), plus Peach's Castle on
+-- the castle grounds. What changed:
+-- - "Keep Song on Level Exit" (mod menu, per player, on by default): a trip through the
+--   castle (Exit Course, Hide and Seek pulling you back into the round's level) keeps the
+--   song playing instead of picking a new one
 -- - each song is loaded once and kept, never freed (with [wip] in the name the game
 --   keeps a mod's files in memory only until their first load, so a freed song was
 --   gone for good: two songs, then the level's own music)
@@ -75,6 +79,14 @@ local LEVEL_SONGS = {
     [LEVEL_BOWSER_2] = { "B2.ogg" },
     [LEVEL_BOWSER_3] = { "B3.ogg" },
     [LEVEL_CASTLE] = { "CastleWalls.ogg" },
+    [LEVEL_CASTLE_GROUNDS] = { "CastleWalls.ogg" },
+}
+
+-- the castle levels you pass through when you leave a course
+local HUB_LEVELS = {
+    [LEVEL_CASTLE] = true,
+    [LEVEL_CASTLE_GROUNDS] = true,
+    [LEVEL_CASTLE_COURTYARD] = true,
 }
 
 -- the levels' own themes, kept off while one of our songs plays
@@ -92,8 +104,10 @@ local streams = {}         -- file -> stream, loaded on first use and kept
 local track = nil          -- the stream that's playing
 local songName = ""
 local currentLevel = -1
+local songLevel = -1       -- the level the playing song was picked for
 local pausedForRtd = false
 local bannerTimer = 0
+local keepSong = mod_storage_load_bool("keepSong", true)
 
 local function is_headless()
     return gServerSettings.headlessServer ~= 0 and network_is_server()
@@ -130,17 +144,30 @@ local function play_song(file)
 end
 
 -- A new level gets a new song. Deaths, rooms and new rounds in the same level keep it.
+-- With keepSong, passing through the castle keeps the song too, and coming back to the
+-- level it was picked for doesn't restart it. A new Hide and Seek round (HnS shares its
+-- state as _G.hnsGameState, 1 = everyone is being warped to the new stage) always picks.
 local function on_level_change()
     if is_headless() then return end
     local level = gNetworkPlayers[0].currLevelNum
     if level == currentLevel then return end
     currentLevel = level
+    local newRound = _G.hnsGameState == 1
+    if keepSong and track ~= nil and not newRound and (HUB_LEVELS[level] or level == songLevel) then
+        return
+    end
     local songs = LEVEL_SONGS[level]
     if songs == nil then
         stop_song()
     else
         play_song(songs[math.random(#songs)])
+        songLevel = level
     end
+end
+
+local function on_keep_song_changed(_, value)
+    keepSong = value
+    mod_storage_save_bool("keepSong", value)
 end
 
 local function update()
@@ -185,3 +212,4 @@ hook_event(HOOK_ON_LEVEL_INIT, on_level_change)
 hook_event(HOOK_ON_WARP, on_level_change)
 hook_event(HOOK_UPDATE, update)
 hook_event(HOOK_ON_HUD_RENDER, on_hud_render)
+hook_mod_menu_checkbox("Keep Song on Level Exit", keepSong, on_keep_song_changed)
