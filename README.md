@@ -88,14 +88,14 @@ Pause menu, Mod Menu, NonStop Music. Each player sets their own, and they're sav
 
 | Option | Default | What it does |
 | --- | --- | --- |
-| Change Song on Level Exit | off | Off: leaving a course through the castle (Exit Course, or Hide and Seek pulling you back into the round's level) keeps the song playing, and coming back doesn't restart it. A new level or a new Hide and Seek round still picks. On: every level change picks again |
-| Random Pick (2-Song Levels) | on | A level with two songs picks one at random each time. Off: always the first one |
-| 2025 Song Layout | off | Off: the NonStopHnS Playlist sheet's layout, every level its own song (BBH and SSL have two). On: the 2025 layout, where sister levels share a pair (BOB and THI both pick from BOB1/BOB2, WF and TTM from WF1/WF2, VCUTM and TTC from VCUTM1/VCUTM2, BITFS from BITDW1/BITFS1) |
+| Google Sheet Song Layout | on | On: the NonStopHnS Playlist sheet's layout, every level its own song (BBH and SSL have two). Off: shared pairs, how the mod actually played in 2025 (BOB and THI both pick from BOB1/BOB2, WF and TTM from WF1/WF2, VCUTM and TTC from VCUTM1/VCUTM2, BITFS from BITDW1/BITFS1) |
+| Shuffle Between 2 Songs | on | A level with two songs picks one at random each time. Off: always the first one |
+| New Song After Exit Course | off | Off: leaving a course through the castle (Exit Course, or Hide and Seek pulling you back into the round's level) keeps the song playing, and coming back doesn't restart it. A new level or a new Hide and Seek round still picks. On: every level change picks again |
 
-All three on is how the 2025 mod behaved. Changing the layout or the random pick switches
-the song right away.
+Sheet off, shuffle on and new song on is how the mod played in 2025. Changing the layout or
+the shuffle switches the song right away.
 
-| Level | Sheet layout (default) | 2025 layout |
+| Level | Sheet layout (default) | Shared pairs (sheet off) |
 | --- | --- | --- |
 | BOB | BOB1 | BOB1 or BOB2 |
 | THI | BOB2 | BOB1 or BOB2 |

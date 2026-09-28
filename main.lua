@@ -9,12 +9,12 @@
 -- the 2025 versions (kept in originals/NonStop-Music), plus Peach's Castle on the castle
 -- grounds. What changed:
 -- - three options in the mod menu, saved per player (defaults in brackets):
---     Change Song on Level Exit [off]: off keeps the song playing through a trip to the
+--     Google Sheet Song Layout [on]: on = the NonStopHnS Playlist sheet (every level its
+--       own song, BBH and SSL two); off = shared pairs, how the mod played in 2025
+--     Shuffle Between 2 Songs [on]: off always plays a level's first song
+--     New Song After Exit Course [off]: off keeps the song playing through a trip to the
 --       castle (Exit Course, Hide and Seek pulling you back into the round's level)
---     Random Pick (2-Song Levels) [on]: off always plays a level's first song
---     2025 Song Layout [off]: off = the NonStopHnS Playlist sheet (every level its own
---       song, BBH and SSL two), on = the 2025 mod (sister levels share a pair)
---   All three on is the 2025 behavior, plus the castle grounds song.
+--   Sheet off, shuffle on, new song on = how it played in 2025, plus the castle grounds song.
 -- - each song is loaded once and kept, never freed (with [wip] in the name the game
 --   keeps a mod's files in memory only until their first load, so a freed song was
 --   gone for good: two songs, then the level's own music)
@@ -58,8 +58,8 @@ local SONG_NAMES = {
     ["CastleWalls.ogg"] = "Mario & Luigi: Superstar Saga - Peach's Castle",
 }
 
--- Songs per level. Levels not listed keep their own music. With Random Pick on, a level
--- with two songs picks one each time you enter it; off, it plays the first one.
+-- Songs per level. Levels not listed keep their own music. With Shuffle on, a level with
+-- two songs picks one each time you enter it; off, it plays the first one.
 
 -- Where the NonStopHnS Playlist sheet (SOURCES.md) puts them: every level its own song.
 -- The sheet lists SSL2 under "ICW" (not a real level) and notes it plays in SSL.
@@ -143,10 +143,11 @@ local songLevel = -1       -- the level the playing song was picked for
 local pausedForRtd = false
 local bannerTimer = 0
 
--- the mod menu options
+-- the mod menu options (sheetLayout replaced "2025 Song Layout", saved as pairedLayout,
+-- which meant the opposite: carry that choice over)
 local changeOnExit = mod_storage_load_bool("changeOnExit", false)
 local randomPick = mod_storage_load_bool("randomPick", true)
-local pairedLayout = mod_storage_load_bool("pairedLayout", false)
+local sheetLayout = mod_storage_load_bool("sheetLayout", not mod_storage_load_bool("pairedLayout", false))
 
 local function is_headless()
     return gServerSettings.headlessServer ~= 0 and network_is_server()
@@ -183,7 +184,7 @@ local function play_song(file)
 end
 
 local function pick_song(level)
-    local songs = (pairedLayout and PAIRED_SONGS or SHEET_SONGS)[level]
+    local songs = (sheetLayout and SHEET_SONGS or PAIRED_SONGS)[level]
     if songs == nil then return nil end
     if randomPick then return songs[math.random(#songs)] end
     return songs[1]
@@ -200,7 +201,7 @@ local function start_level_song(level)
 end
 
 -- A new level gets a new song. Deaths, rooms and new rounds in the same level keep it.
--- With Change Song on Level Exit off, passing through the castle keeps the song too, and
+-- With New Song After Exit Course off, passing through the castle keeps the song too, and
 -- coming back to the level it was picked for doesn't restart it. A new Hide and Seek
 -- round (HnS shares its state as _G.hnsGameState, 1 = everyone is being warped to the
 -- new stage) always picks.
@@ -228,9 +229,9 @@ local function on_random_pick(_, value)
     if not is_headless() and currentLevel >= 0 then start_level_song(currentLevel) end
 end
 
-local function on_paired_layout(_, value)
-    pairedLayout = value
-    mod_storage_save_bool("pairedLayout", value)
+local function on_sheet_layout(_, value)
+    sheetLayout = value
+    mod_storage_save_bool("sheetLayout", value)
     if not is_headless() and currentLevel >= 0 then start_level_song(currentLevel) end
 end
 
@@ -276,6 +277,6 @@ hook_event(HOOK_ON_LEVEL_INIT, on_level_change)
 hook_event(HOOK_ON_WARP, on_level_change)
 hook_event(HOOK_UPDATE, update)
 hook_event(HOOK_ON_HUD_RENDER, on_hud_render)
-hook_mod_menu_checkbox("Change Song on Level Exit", changeOnExit, on_change_on_exit)
-hook_mod_menu_checkbox("Random Pick (2-Song Levels)", randomPick, on_random_pick)
-hook_mod_menu_checkbox("2025 Song Layout", pairedLayout, on_paired_layout)
+hook_mod_menu_checkbox("Google Sheet Song Layout", sheetLayout, on_sheet_layout)
+hook_mod_menu_checkbox("Shuffle Between 2 Songs", randomPick, on_random_pick)
+hook_mod_menu_checkbox("New Song After Exit Course", changeOnExit, on_change_on_exit)
